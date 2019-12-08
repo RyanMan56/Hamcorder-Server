@@ -1,0 +1,23 @@
+{
+  "name": "hamcorder",
+  "version": "0.0.1",
+  "description": "Raspberry pi video streaming and hamster feeder",
+  "main": "index.js",
+  "dependencies": {
+    "raspivid-stream": "^0.2.1",
+    "ws": "^7.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "javascript",
+    "stream",
+    "video",
+    "server"
+  ],
+  "author": "Ryan Brian Jones",
+  "license": "ISC"
+}
