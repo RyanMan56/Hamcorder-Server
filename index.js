@@ -4,7 +4,7 @@ const WebSocket = require('ws');
 const url = require('url');
 
 // const hostname = '127.0.0.1';
-const hostname = '192.168.1.111';
+const hostname = '192.168.1.156';
 const port = 3000;
 
 const server = http.createServer((req, res) => {
@@ -18,7 +18,8 @@ const wss = new WebSocket.Server({ noServer: true });
 wss.on('connection', function connection(ws) {
   console.log('client connected to websocket server');
 
-  const videoStream = new raspividStream();
+  // Not null, but providing any values to these bools crashes the raspicam cli
+  const videoStream = new raspividStream({ vflip: null, hflip: null });
 
   ws.on('close', function close(code, reason) {
     console.log(`client disconnected with code ${code}`);
@@ -32,7 +33,7 @@ wss.on('connection', function connection(ws) {
     // CLOSING    2 The connection is in the process of closing.
     // CLOSED	    3	The connection is closed.
     if (ws.readyState === 1) {
-      ws.send(data, { binary:  true }, (error) => { if(error) console.log(error); });
+      ws.send(data, { binary: true }, (error) => { if(error) console.log(error); });
     }
   });
 });
