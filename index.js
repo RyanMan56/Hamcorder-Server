@@ -1,7 +1,7 @@
 const http = require('http');
-const raspividStream = require('raspivid-stream');
-const WebSocket = require('ws');
 const url = require('url');
+const WebSocket = require('ws');
+const raspividStream = require('raspivid-stream');
 
 // const hostname = '127.0.0.1';
 const hostname = '192.168.1.156';
@@ -37,6 +37,8 @@ wss.on('connection', function connection(ws) {
     }
   });
 });
+
+const ws = new WebSocket('ws://192.168.1.215:9000/ws');
 
 server.on('upgrade', function upgrade(request, socket, head) {
   const pathname = url.parse(request.url).pathname;
